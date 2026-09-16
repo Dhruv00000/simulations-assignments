@@ -32,7 +32,6 @@ radii: list[int] = []
 positions: list[ndarray] = []
 velocities: list[ndarray] = []
 colours: list[tuple[int, int, int]] = []
-masses: list[float] = []
 
 for ball_index in range(ball_count):
 
@@ -52,8 +51,6 @@ for ball_index in range(ball_count):
     ]))
 
     colours.append((random_int(50, 255), random_int(50, 255), random_int(50, 255))) # An attempt at making balls easier to track (by giving them all different colours). 50 is an endpoint of the range of possible r/g/b values here instead of 0 in order to ensure that the balls are bright enough to be visible on the dark background of the simulation.
-
-    masses.append(random_uniform(mass_range[0], mass_range[1]))
 
 
 pygame.init()
@@ -104,8 +101,8 @@ while running:
 
         if distance_between_centres <= sum_of_radii:
 
-            mass_1: float = masses[index_of_first_ball]
-            mass_2: float = masses[index_of_second_ball]
+            mass_1: float = radii[index_of_first_ball] ** 2 # ALthough mass is not actually equal to r^2, we only need to consider the proportionality of mass (to area) for our calculations.
+            mass_2: float = radii[index_of_second_ball] ** 2
             normal_unit_vector: ndarray = normal_vector / distance_between_centres
             speed_of_approach: float = float(dot_product(velocities[index_of_second_ball], normal_unit_vector) - dot_product(velocities[index_of_first_ball], normal_unit_vector))
             total_mass: float = mass_1 + mass_2
