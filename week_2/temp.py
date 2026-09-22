@@ -16,7 +16,7 @@ class Material(IntEnum):
 
 PALETTE = {
     Material.EMPTY: (0, 0, 0),
-    Material.SAND: (194, 178, 128),
+    Material.SAND: (246, 215, 176),
     Material.WATER: (52, 120, 235),
     Material.WOOD: (139, 69, 19),
     Material.FIRE: (230, 69, 0),
