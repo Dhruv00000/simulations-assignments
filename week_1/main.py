@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from random import randint as random_int
 from random import uniform as random_uniform
 
